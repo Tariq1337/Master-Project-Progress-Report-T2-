@@ -159,6 +159,8 @@ function drawGame1(){
   tryAgainButton.hide();
   homeButton.hide();
   tempButton.show();
+  
+  drawLine();
 }
 
 //draws the second game (when we finish it)
@@ -228,7 +230,7 @@ function drawResultScreen(){
   fill(50);
   text('Here', 25, 230);
   
-  //checks what game the user came from and sends them back to it when they press the try again button
+//checks what game the user came from and sends them back to it when they press the try again button
   if (gameNum == 1){
     tryAgainButton.mousePressed(drawGame1);
   } else if (gameNum == 2){
@@ -236,4 +238,31 @@ function drawResultScreen(){
   } else if (gameNum == 3){
     tryAgainButton.mousePressed(drawGame3);
   }
+}
+
+function drawLine(){
+  var variant = round(random(1,6));
+  drawingContext.setLineDash([5,10]);
+  if (variant == 1){
+    line(50, 170, 140, 200);
+    line(140, 200, 200, 276);
+    line(200, 276, 70, 450);
+  } else if (variant == 2){
+    line(270, 160, 67, 180);
+    line(67, 180, 70, 300);
+    line(70, 300, 150, 450);
+  } else if (variant == 3){
+    line(50, 160, 75, 400);
+    line(75, 400, 175, 400);
+    line(175, 400, 250, 160);
+  } else if (variant == 4){
+    line(50, 160, 250, 160);
+    line(250, 160, 50, 450);
+    line(50, 450, 250, 450);
+  } else {
+    line(50, 160, 250, 250);
+    line(250, 250, 50, 450);
+    line(50, 450, 250, 450);
+  }
+  drawingContext.setLineDash([]);
 }
